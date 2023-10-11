@@ -15,6 +15,11 @@ set zone-policy zone loc from lan firewall name lan-loc
 set zone-policy zone loc from wan firewall name wan-loc
 set zone-policy zone loc local-zone
 
+set service dhcp-server shared-network-name LAN subnet 10.0.0.0/21 default-router '10.0.7.254'
+set service dhcp-server shared-network-name LAN subnet 10.0.0.0/21 lease '7200'
+set service dhcp-server shared-network-name LAN subnet 10.0.0.0/21 name-server '10.0.7.100'
+set service dhcp-server shared-network-name LAN subnet 10.0.0.0/21 range 0 start '10.0.7.100'
+set service dhcp-server shared-network-name LAN subnet 10.0.0.0/21 range 0 stop '10.0.7.150'
 
 
 
