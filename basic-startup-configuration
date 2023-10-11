@@ -1,0 +1,64 @@
+Interfaces lan loc wan
+
+set zone-policy zone lan default-action reject
+set zone-policy zone lan from loc firewall name loc-lan
+set zone-policy zone lan from wan firewall name wan-lan
+set zone-policy zone lan interface eth0
+
+set zone-policy zone wan default-action reject
+set zone-policy zone wan from loc firewall name loc-wan
+set zone-policy zone wan from lan firewall name lan-wan
+set zone-policy zone wan interface eth1
+
+set zone-policy zone loc default-action reject
+set zone-policy zone loc from lan firewall name lan-loc
+set zone-policy zone loc from wan firewall name wan-loc
+set zone-policy zone loc local-zone
+
+
+
+
+set firewall name all-all default-action accept
+
+set firewall name lan-loc default-action accept
+set firewall name lan-wan default-action reject
+
+set firewall name loc-wan default-action accept
+set firewall name loc-lan default-action accept
+
+set firewall name wan-lan default-action reject
+set firewall name wan-loc default-action reject
+
+
+set firewall name wan-loc rule 100 action accept
+set firewall name wan-loc rule 100 source port ssh
+set firewall name wan-loc ruel1 100 protocol tcp
+
+set firewall name lan-wan rule 100 action accept
+set firewall name lan-wan rule 100 protocol icmp
+
+set nat source rule 100 description 'Interent Access'
+set nat source rule 100 outbound-interface 'eth1'
+set nat source rule 100 source address '10.0.0.0/21'
+set nat source rule 100 translation address 'masquerade'
+
+set service dns forwarding listen-address '10.0.7.254'
+set service dns forwarding name-server '9.9.9.9'
+set service dns forwarding name-server '1.1.1.1'
+set service dns forwarding name-server '1.0.0.1'
+set service dns forwarding name-server '8.8.8.8'
+set service dns forwarding name-server '8.8.4.4'
+
+set service dns forwarding allow-from '10.0.0.0/21'
+
+set firewall receive-redirects 'disable'
+set firewall send-redirects 'enable'
+set firewall source-validation 'disable'
+set firewall state-policy established action 'accept'
+set firewall state-policy invalid action 'reject'
+set firewall state-policy related action 'accept'
+set firewall syn-cookies 'enable'
+set firewall twa-hazards-protection 'disable'
+
+
+
