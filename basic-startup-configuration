@@ -31,7 +31,7 @@ set firewall name wan-loc default-action reject
 
 
 set firewall name wan-loc rule 100 action accept
-set firewall name wan-loc rule 100 source port ssh
+set firewall name wan-loc rule 100 destination port 22 ( or your custom ssh port)
 set firewall name wan-loc ruel1 100 protocol tcp
 
 set firewall name lan-wan rule 100 action accept
