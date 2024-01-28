@@ -1,3 +1,4 @@
+```bash
 # FIREWALL SETTINGS
 # Enable all pings
 set firewall all-ping 'enable'
