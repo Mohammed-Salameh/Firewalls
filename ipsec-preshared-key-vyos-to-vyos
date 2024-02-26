@@ -1,3 +1,4 @@
+```bash
 set vpn ipsec esp-group esp-def compression 'disable'
 set vpn ipsec esp-group esp-def lifetime '3600'
 set vpn ipsec esp-group esp-def mode 'tunnel'
@@ -31,7 +32,7 @@ set vpn ipsec site-to-site peer 192.168.122.26 tunnel 1 allow-nat-networks 'disa
 set vpn ipsec site-to-site peer 192.168.122.26 tunnel 1 allow-public-networks 'disable'
 set vpn ipsec site-to-site peer 192.168.122.26 tunnel 1 local prefix '10.0.0.0/21'
 set vpn ipsec site-to-site peer 192.168.122.26 tunnel 1 remote prefix '172.16.0.0/21'
-
+```
 
 
 
