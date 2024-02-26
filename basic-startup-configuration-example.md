@@ -1,5 +1,5 @@
 ```bash
-# FIREWALL SETTINGS
+# FIREWALL SETTINGS EXAMPLE
 # Enable all pings
 set firewall all-ping 'enable'
 # Disable broadcast pings
